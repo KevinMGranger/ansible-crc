@@ -7,7 +7,7 @@
 - name: download crc
   get_url:
     dest: "{{ tmpdir.path }}/crc.tar.xz"
-    url: "{{latest_release_url_base}}/crc-linux-amd64.tar.xz"
+    url: "{{ crc_releases_url_base }}/{{ target_crc_version }}/crc-linux-amd64.tar.xz"
 
 - name: unpack crc
   unarchive:

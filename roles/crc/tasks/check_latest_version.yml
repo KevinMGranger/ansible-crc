@@ -10,4 +10,4 @@
 
 - name: compare versions
   set_fact:
-    is_out_of_date: "{{local_crc_version is version(latest_release_version, operator='lt')}}"
+    should_install: "{{local_crc_version is version(latest_release_version, operator='lt')}}"

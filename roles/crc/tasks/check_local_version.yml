@@ -3,7 +3,7 @@
     path: "{{installed_crc_path}}"
     follow: yes
   register: stat
-
+  
 - name: check current CRC version
   command:
     argv: ["{{installed_crc_path}}", version, "-o", json]
