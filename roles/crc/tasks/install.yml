@@ -26,6 +26,15 @@
     that: [globbed_binary.files | length == 1]
     msg: found more than one crc file
 
+- set_fact:
+    tmp_crc_bin: "{{globbed_binary.files[0].path}}" 
+
 - name: run crc setup
   command:
-    argv: ["{{globbed_binary.files[0].path}}", setup]
+    argv: ["{{ tmp_crc_bin }}", setup]
+
+- name: copy CRC binary to installed locaiton
+  copy:
+    src: "{{ tmp_crc_bin }}"
+    dest: "{{ installed_crc_path }}"
+    force: yes
