@@ -1,0 +1,19 @@
+namespace: kevinmgranger
+
+name: crc
+
+version: "0.0.1"
+
+readme: README.md
+
+authors:
+  - Kevin M Granger <ansible@kevinmgranger.me>
+
+description: set up and run an OpenShift Local cluster
+
+license_file: COPYING
+
+tags: ["codeready"]
+
+repository: https://github.com/KevinMGranger/ansible-crc
+issues: https://github.com/KevinMGranger/ansible-crc/issues
