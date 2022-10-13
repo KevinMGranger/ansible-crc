@@ -24,7 +24,7 @@
 
 - assert:
     that: [globbed_binary.files | length == 1]
-    msg: found more than one crc file
+    fail_msg: found more than one crc file
 
 - set_fact:
     tmp_crc_bin: "{{globbed_binary.files[0].path}}" 
@@ -35,6 +35,8 @@
 
 - name: copy CRC binary to installed locaiton
   copy:
+    remote_src: yes
     src: "{{ tmp_crc_bin }}"
     dest: "{{ installed_crc_path }}"
+    mode: u=rx
     force: yes
