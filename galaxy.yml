@@ -15,5 +15,8 @@ license_file: COPYING
 
 tags: ["codeready"]
 
+build_ignore:
+  - ".vscode"
+
 repository: https://github.com/KevinMGranger/ansible-crc
 issues: https://github.com/KevinMGranger/ansible-crc/issues
