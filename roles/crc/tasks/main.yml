@@ -11,5 +11,16 @@
   become: true
   tags: [remote-reachable]
 
+- name: open firewalld service on given zone
+  ansible.posix.firewalld:
+    zone: "{{ firewall_zone }}"
+    service: "{{ item }}"
+    state: enabled
+  loop:
+    - kube-apiserver
+    - http
+  when: fireall_zone is defined
+  tags: [remote-reachable]
+
 # TODO: not enabling systemd service just yet because
 # we'll probably want the `crc-runner`.
