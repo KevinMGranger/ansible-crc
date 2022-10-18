@@ -1,0 +1,25 @@
+---
+- name: check local version
+  import_tasks: check_local_version.yml
+
+- name: install if entirely absent
+  when: local_crc_version is not defined
+  set_fact:
+    should_install: yes
+
+- name: install if local version is not the target version
+  when: 
+    - local_crc_version is defined
+    - target_crc_version != "latest"
+  set_fact:
+    should_install: local_crc_version is version(target_version, operator='ne')
+
+- name: check against latest version
+  when:
+    - local_crc_version is defined
+    - target_crc_version == "latest"
+  include_tasks: check_latest_version.yml
+
+- name: install if needed
+  include_tasks: do_install.yml
+  when: should_install
