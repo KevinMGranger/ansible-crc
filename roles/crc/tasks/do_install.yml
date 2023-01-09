@@ -33,10 +33,11 @@
   command:
     argv: ["{{ tmp_crc_bin }}", setup]
 
-- name: copy CRC binary to installed locaiton
-  copy:
-    remote_src: yes
-    src: "{{ tmp_crc_bin }}"
-    dest: "{{ installed_crc_path }}"
-    mode: u=rx
-    force: yes
+# TODO: is this necessary?
+# - name: copy CRC binary to installed locaiton
+#   copy:
+#     remote_src: yes
+#     src: "{{ tmp_crc_bin }}"
+#     dest: "{{ installed_crc_path }}"
+#     mode: u=rx
+#     force: yes
