@@ -3,10 +3,15 @@
     url: "{{latest_release_url_base}}/release-info.json"
     return_content: yes
   register: release_info_json
+  delegate_to: "127.0.0.1"
 
 - name: set latest version info
   set_fact:
     latest_release_version: "{{(release_info_json.content | from_json).version.crcVersion}}"
+
+- name: show latest version info
+  debug:
+    var: latest_release_version
 
 - name: compare versions
   set_fact:

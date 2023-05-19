@@ -14,3 +14,8 @@
   set_fact:
     local_crc_version: "{{ (crc_version_result.stdout | from_json).version }}"
   when: stat.stat.exists
+
+- name: show local version
+  debug:
+    var: local_crc_version
+  when: local_crc_version is defined
