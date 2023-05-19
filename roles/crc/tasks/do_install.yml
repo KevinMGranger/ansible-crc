@@ -8,7 +8,7 @@
   get_url:
     dest: "{{ tmpdir.path }}/crc.tar.xz"
     url: "{{ crc_releases_url_base }}/{{ target_crc_version }}/crc-linux-amd64.tar.xz"
-
+  
 - name: unpack crc
   unarchive:
     src: "{{ tmpdir.path }}/crc.tar.xz"
@@ -29,15 +29,15 @@
 - set_fact:
     tmp_crc_bin: "{{globbed_binary.files[0].path}}" 
 
-- name: run crc setup
-  command:
-    argv: ["{{ tmp_crc_bin }}", setup]
+# TODO: crc setup can require sudo mid-exection but can't be run as root :/
+# - name: run crc setup
+#   command:
+#     argv: ["{{ tmp_crc_bin }}", setup]
 
-# TODO: is this necessary?
-# - name: copy CRC binary to installed locaiton
-#   copy:
-#     remote_src: yes
-#     src: "{{ tmp_crc_bin }}"
-#     dest: "{{ installed_crc_path }}"
-#     mode: u=rx
-#     force: yes
+- name: copy CRC binary to installed locaiton
+  copy:
+    remote_src: yes
+    src: "{{ tmp_crc_bin }}"
+    dest: "{{ installed_crc_path }}"
+    mode: u=rx
+    force: yes
