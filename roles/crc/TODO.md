@@ -1,3 +1,7 @@
+# nearer-term todo
+- [ ] how do we handle upgrades? need to / want to destroy old version?
+- [ ] is there a way to automate `crc setup`? It requires sudo.
+
 # near-term todo
 - [ ] if updating the crc binary, do we check for a running instance and stop it?
 - [ ] do we include a way of providing configuration?
